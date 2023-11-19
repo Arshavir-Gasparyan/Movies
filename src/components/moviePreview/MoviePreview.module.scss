@@ -1,0 +1,47 @@
+.movie_preview_container {
+  background-image: url("coverImage.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  position: relative;
+  .video {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: 1000;
+  }
+
+  .movie_details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 120px;
+    width: 100vw;
+    margin-left: 100px;
+    opacity: 0.6;
+    .movie {
+      font-size: large;
+      color: dimgray;
+    }
+
+    img {
+      width: 400px;
+      height: 70px;
+    }
+
+    .additional_info {
+      color: white;
+      font-size: 24px;
+      margin-top: 24px;
+    }
+
+    .description {
+      color: white;
+      font-size: 24px;
+      margin-top: 24px;
+      width: 500px;
+    }
+  }
+}

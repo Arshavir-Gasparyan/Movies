@@ -9,9 +9,11 @@ interface AvatarProps {
 
 export const Avatar = ({ imageSrc, name, className }: AvatarProps) => {
   return (
-    <div className={clsx(styles.avatar, className)}>
-      <img alt="name" src={imageSrc} />
-      <span>{name}</span>
+    <div className={styles.avatar_container}>
+      <div className={clsx(styles.avatar, className)}>
+        <img alt="name" src={imageSrc} />
+        <span>{name}</span>
+      </div>
     </div>
   );
 };

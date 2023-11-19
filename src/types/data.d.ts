@@ -32,7 +32,7 @@ export interface Idata {
   TendingNow: ITendingNow[];
 }
 
-export interface INormalizedTendingNowData {
+export interface INormalizedData {
   id: number;
   title: string;
   coverImage: string;
@@ -42,6 +42,6 @@ export interface INormalizedTendingNowData {
   mpaRating: string;
   category: string;
   duration: number;
-  videoUrl: string;
+  videoUrl?: string;
   description: string;
 }

@@ -10,14 +10,16 @@ export const AdditionalMenuList = ({
   className,
 }: AdditionalMenuListProps) => {
   return (
-    <ul className={className}>
-      {menuList.map((item) => {
-        return (
-          <li key={item}>
-            <span>{item}</span>
-          </li>
-        );
-      })}
-    </ul>
+    <div style={{ height: "25%" }}>
+      <ul className={className}>
+        {menuList.map((item) => {
+          return (
+            <li key={item}>
+              <span>{item}</span>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 };

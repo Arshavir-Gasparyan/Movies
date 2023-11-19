@@ -1,17 +1,16 @@
 import { ScrollContainer } from "react-indiana-drag-scroll";
 import "react-indiana-drag-scroll/dist/style.css";
 import styles from "./MovieList.module.scss";
-import data from "../../data.json";
 import { useGetData } from "../../hooks/useGetData";
-import { INormalizedTendingNowData } from "../../types/data";
+import { INormalizedData } from "../../types/data";
 
 interface MovieListProps {
-  onMovieSelect: (data: INormalizedTendingNowData) => void;
+  onMovieSelect: (data: INormalizedData) => void;
 }
 
 export const MovieList = ({ onMovieSelect }: MovieListProps) => {
-  const { tendingNowData } = useGetData(data);
-  console.log(tendingNowData);
+  const { tendingNowData } = useGetData();
+
   return (
     <ScrollContainer className={styles.movies_container}>
       {tendingNowData &&

@@ -15,8 +15,12 @@
   height: 100vh;
   background-color: black;
   color: white;
+  position: absolute;
+  z-index: 2000;
+  left: 0;
   .menu_list {
     padding: 10px;
+    height: 50%;
     li {
       display: flex;
       gap: 10px;
@@ -41,6 +45,7 @@
       list-style: none;
       color: dimgray;
       cursor: pointer;
+      margin-top: 10px;
     }
 
     span {
@@ -52,23 +57,23 @@
   @include keyframes(container) {
     0% {
       opacity: 0;
-      width: 100px;
+      width: 75px;
     }
     25% {
-      opacity: 0.25;
-      width: 150px;
+      opacity: 0.2;
+      width: 110px;
     }
     50% {
-      opacity: 0.5;
-      width: 200px;
+      opacity: 0.4;
+      width: 145px;
     }
     75% {
-      opacity: 0.75;
-      width: 250px;
+      opacity: 0.6;
+      width: 180px;
     }
     100% {
-      opacity: 1;
-      width: 300px;
+      opacity: 0.8;
+      width: 215px;
     }
   }
 
@@ -91,11 +96,11 @@
   }
 
   &:hover {
-    @include animate(container, 1s, linear forwards, 1);
+    @include animate(container, 0.5s, linear forwards, 1);
   }
 
   &:hover span {
-    @include animate(children, 1s, linear forwards, 1);
+    @include animate(children, 0.5s, linear forwards, 1);
     display: block;
   }
 

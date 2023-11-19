@@ -1,9 +1,9 @@
 import dayjs from "dayjs";
-import { Idata, INormalizedTendingNowData } from "../types/data";
+import { Idata, INormalizedData } from "../types/data";
 
 export const getNormalizedTendingNowData = ({
   TendingNow,
-}: Idata): INormalizedTendingNowData[] => {
+}: Idata): INormalizedData[] => {
   return TendingNow.map((item) => {
     return {
       id: Number(item.Id),
