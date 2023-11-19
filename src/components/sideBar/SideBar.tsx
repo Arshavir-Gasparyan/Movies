@@ -8,37 +8,41 @@ import Genres from "../../icons/Genres.png";
 import WatchLater from "../../icons/WatchLater.png";
 import AvatarIcon from "../../icons/avatar.png";
 import { useState } from "react";
-import clsx from "clsx";
 import { Avatar } from "../avatar/Avatar";
+import { MenuList } from "../menuList/MenuList";
+import { AdditionalMenuTitles, MenuTitles } from "../../constants/menuTitles";
+import { AdditionalMenuList } from "../additionalMenuList/AdditionalMenuList";
 
-const SideBarChildrenMap = [
-  { title: "Search", icon: Search },
-  { title: "Home", icon: Home },
-  { title: "TV Shows", icon: TVShows },
-  { title: "Movies", icon: Movies },
-  { title: "Genres", icon: Genres },
-  { title: "Watch Later", icon: WatchLater },
+const SideBarMenuListMap = [
+  { title: MenuTitles.SEARCH, icon: Search },
+  { title: MenuTitles.HOME, icon: Home },
+  { title: MenuTitles.TVSHOWS, icon: TVShows },
+  { title: MenuTitles.MOVIES, icon: Movies },
+  { title: MenuTitles.GENRES, icon: Genres },
+  { title: MenuTitles.WATCHLATER, icon: WatchLater },
+];
+
+const SideBarAdditionalMenuListMap = [
+  AdditionalMenuTitles.LANGUAGE,
+  AdditionalMenuTitles.GETHELP,
+  AdditionalMenuTitles.EXIT,
 ];
 
 export const SideBar = () => {
-  const [selectedItem, setSelectedItem] = useState("Home");
+  const [selectedItem, setSelectedItem] = useState<MenuTitles>(MenuTitles.HOME);
   return (
     <div className={styles.side_bar_container}>
       <Avatar name="Daniel" imageSrc={AvatarIcon} className={styles.avatar} />
-      <ul>
-        {SideBarChildrenMap.map((item) => {
-          return (
-            <li
-              onClick={() => setSelectedItem(item.title)}
-              key={item.title}
-              className={clsx(selectedItem === item.title && styles.selected)}
-            >
-              <img alt={item.title} src={item.icon}></img>
-              <span>{item.title}</span>
-            </li>
-          );
-        })}
-      </ul>
+      <MenuList
+        menuList={SideBarMenuListMap}
+        onMenuItemSelect={setSelectedItem}
+        selectedItem={selectedItem}
+        className={styles.menu_list}
+      />
+      <AdditionalMenuList
+        className={styles.additional_menu_list}
+        menuList={SideBarAdditionalMenuListMap}
+      />
     </div>
   );
 };
