@@ -1,0 +1,93 @@
+@mixin animate($animation, $duration, $method, $times) {
+  animation: $animation $duration $method $times;
+}
+
+@mixin keyframes($name) {
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+.side_bar_container {
+  height: 100vh;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  ul {
+    padding: 10px;
+    li {
+      display: flex;
+      gap: 10px;
+      list-style: none;
+      margin-top: 20px;
+      padding: 15px;
+    }
+    img {
+      width: 25px;
+      height: 25px;
+    }
+    span {
+      display: none;
+      transition: display 1s;
+    }
+    .selected {
+      border-radius: 20px;
+      background-color: rgb(56, 56, 105);
+    }
+  }
+
+  @include keyframes(container) {
+    0% {
+      opacity: 0;
+      width: 100px;
+    }
+    25% {
+      opacity: 0.25;
+      width: 150px;
+    }
+    50% {
+      opacity: 0.5;
+      width: 200px;
+    }
+    75% {
+      opacity: 0.75;
+      width: 250px;
+    }
+    100% {
+      opacity: 1;
+      width: 300px;
+    }
+  }
+
+  @include keyframes(children) {
+    0% {
+      font-size: 2px;
+    }
+    25% {
+      font-size: 6px;
+    }
+    50% {
+      font-size: 10px;
+    }
+    75% {
+      font-size: 14px;
+    }
+    100% {
+      font-size: 18px;
+    }
+  }
+
+  &:hover {
+    @include animate(container, 1s, linear forwards, 1);
+  }
+
+  &:hover span {
+    @include animate(children, 1s, linear forwards, 1);
+    display: block;
+  }
+
+  &:hover .avatar {
+    @include animate(children, 1s, linear forwards, 1);
+    display: flex;
+  }
+}
