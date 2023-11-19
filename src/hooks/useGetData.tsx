@@ -2,9 +2,11 @@ import dayjs from "dayjs";
 import { useCallback, useEffect, useState } from "react";
 import { Idata, INormalizedData } from "../types/data";
 import data from "../data.json";
+import { sortData } from "../helper/sortData";
 
 export const useGetData = () => {
   const { Featured, TendingNow }: Idata = data;
+  const id = sessionStorage.getItem("id");
 
   const [tendingNowData, setTendingNowData] = useState<INormalizedData[]>();
   const [featuredData, setFeaturedData] = useState<INormalizedData>({
@@ -20,33 +22,34 @@ export const useGetData = () => {
     description: Featured.Description,
   });
 
-  const getTendingNowData = useCallback(() => {
-    const normalizedTEndingNowData = TendingNow.map((item) => {
-      return {
-        id: Number(item.Id),
-        title: item.Title,
-        coverImage: item.CoverImage,
-        titleImage: item.TitleImage,
-        date: dayjs(item.Date),
-        releaseYear: Number(item.ReleaseYear),
-        mpaRating: item.MpaRating,
-        category: item.Category,
-        duration: Number(item.Duration),
-        videoUrl: item.VideoUrl,
-        description: item.Description,
-      };
-    });
-
-    setTendingNowData(normalizedTEndingNowData);
-  }, [TendingNow]);
+  const normalizedTEndingNowData = useCallback(
+    () =>
+      TendingNow.map((item) => {
+        return {
+          id: Number(item.Id),
+          title: item.Title,
+          coverImage: item.CoverImage,
+          titleImage: item.TitleImage,
+          date: dayjs(item.Date),
+          releaseYear: Number(item.ReleaseYear),
+          mpaRating: item.MpaRating,
+          category: item.Category,
+          duration: Number(item.Duration),
+          videoUrl: item.VideoUrl,
+          description: item.Description,
+        };
+      }),
+    [TendingNow]
+  );
 
   const mutateFeaturedData = (data: INormalizedData) => {
     setFeaturedData(data);
   };
 
   useEffect(() => {
-    getTendingNowData();
-  }, [getTendingNowData]);
+    const sortedData = sortData(normalizedTEndingNowData(), Number(id));
+    setTendingNowData(sortedData);
+  }, [id, normalizedTEndingNowData]);
 
   return { tendingNowData, featuredData, mutateFeaturedData };
 };

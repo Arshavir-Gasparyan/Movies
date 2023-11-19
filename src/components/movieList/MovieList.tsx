@@ -1,6 +1,7 @@
 import { ScrollContainer } from "react-indiana-drag-scroll";
 import "react-indiana-drag-scroll/dist/style.css";
 import styles from "./MovieList.module.scss";
+
 import { useGetData } from "../../hooks/useGetData";
 import { INormalizedData } from "../../types/data";
 
