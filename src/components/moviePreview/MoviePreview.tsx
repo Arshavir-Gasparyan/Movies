@@ -1,5 +1,5 @@
 import { INormalizedData } from "../../types/data";
-import styles from "./moviePreview.module.scss";
+import styles from "./MoviePreview.module.scss";
 
 interface IMainVideoProps {
   data: INormalizedData;
