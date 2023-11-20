@@ -3,7 +3,7 @@
   flex-direction: row;
   width: 100vw;
   height: 400px;
-  background-color: black;
+  z-index: 2000;
 
   .image {
     margin: 15px;
